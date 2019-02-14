@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 public class GuiSetup extends Application {
 
-    BorderPane mainPane;
+    private BorderPane mainPane;
 
     @Override
     public void start(Stage stage) {
@@ -20,6 +20,14 @@ public class GuiSetup extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+
+    public BorderPane getMainPane(){
+        return mainPane;
+    }
+
+
+
     public static void main(String args[]){
         launch(args);
     }
