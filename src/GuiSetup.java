@@ -12,7 +12,7 @@ public class GuiSetup extends Application {
     public void start(Stage stage) {
 
         mainPane = new BorderPane();
-
+        Ball ball = new Ball(this);
 
 
         Scene scene = new Scene(mainPane, 650, 950);
