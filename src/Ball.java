@@ -11,7 +11,7 @@ public class Ball {
 
     public final double radius = 20;
     private double x = radius, y = radius;
-    private double dx = 5, dy = 5;
+    private double dx = 3, dy = 3;
     private Circle circle = new Circle(x, y, radius);
     private Timeline animation;
 
@@ -23,7 +23,7 @@ public class Ball {
         pane.getMainPane().getChildren().addAll(circle);
         // Create an animation for moving the ball
         animation = new Timeline(
-                new KeyFrame(Duration.millis(50), e -> moveBall()));
+                new KeyFrame(Duration.millis(20), e -> moveBall()));
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.play(); // Start animation
     }
@@ -54,6 +54,7 @@ public class Ball {
         // Adjust ball position
         x += dx;
         y += dy;
+        dy += 1;
         circle.setCenterX(x);
         circle.setCenterY(y);
     }
