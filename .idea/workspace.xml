@@ -53,8 +53,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Firkant.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Firkant.java">
+      <file leaf-file-name="MyRectangle.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MyRectangle.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="154">
               <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
@@ -93,6 +93,7 @@
         <option value="$PROJECT_DIR$/src/BoundsPlayground.java" />
         <option value="$PROJECT_DIR$/src/CheckCollision.java" />
         <option value="$PROJECT_DIR$/src/Firkant.java" />
+        <option value="$PROJECT_DIR$/src/MyRectangle.java" />
       </list>
     </option>
   </component>
@@ -308,7 +309,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Firkant.java">
+    <entry file="file://$PROJECT_DIR$/src/MyRectangle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
