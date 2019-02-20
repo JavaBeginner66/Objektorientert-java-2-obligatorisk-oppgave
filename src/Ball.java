@@ -1,7 +1,6 @@
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
@@ -15,9 +14,9 @@ public class Ball {
     private Circle circle = new Circle(x, y, radius);
     private Timeline animation;
 
-    GuiSetup pane;
+    PinballBoard pane;
 
-    public Ball(GuiSetup pane) {
+    public Ball(PinballBoard pane) {
         circle.setFill(Color.GREEN);
         this.pane = pane;
         pane.getMainPane().getChildren().addAll(circle);
