@@ -5,7 +5,7 @@ public class MyRectangle extends Rectangle implements CheckCollision{
 
     public void collision(Ball ball)
     {
-        
+
     }
 
 }
