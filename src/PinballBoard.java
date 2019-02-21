@@ -9,13 +9,15 @@ import java.awt.*;
 public class PinballBoard extends Application {
 
     private BorderPane mainPane;
+    private Ball ball;
+    private Design design;
 
     @Override
     public void start(Stage stage) {
 
         mainPane = new BorderPane();
-        Ball ball = new Ball(20, 20, 20, this);
-        Design design = new Design(this);
+        ball = new Ball(20, 20, 20, this);
+        design = new Design(this);
 
 
         mainPane.getChildren().addAll(ball);
@@ -30,7 +32,13 @@ public class PinballBoard extends Application {
         return mainPane;
     }
 
+    public Ball getBall() {
+        return ball;
+    }
 
+    public Design getDesign() {
+        return design;
+    }
 
     public static void main(String args[]){
         launch(args);

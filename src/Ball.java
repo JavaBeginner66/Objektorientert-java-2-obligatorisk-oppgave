@@ -11,11 +11,11 @@ public class Ball extends Circle{
     private Timeline animation;
     private double dx = 1, dy = 1;
 
-    PinballBoard pane;
+    PinballBoard board;
 
-    public Ball(double x, double y, double r, PinballBoard pane) {
+    public Ball(double x, double y, double r, PinballBoard board) {
         super(x, y, r);
-        this.pane = pane;
+        this.board = board;
 
         // Create an animation for moving the ball
         animation = new Timeline(
@@ -40,10 +40,10 @@ public class Ball extends Circle{
 
     protected void moveBall() {
         // Check boundaries
-        if (getCenterX() < getRadius() || getCenterX() > pane.getMainPane().getWidth() - getRadius()) {
+        if (getCenterX() < getRadius() || getCenterX() > board.getMainPane().getWidth() - getRadius()) {
             dx *= -1; // Change ball move direction
         }
-        if (getCenterY() < getRadius() || getCenterY() > pane.getMainPane().getHeight() - getRadius()) {
+        if (getCenterY() < getRadius() || getCenterY() > board.getMainPane().getHeight() - getRadius()) {
             dy *= -1; // Change ball move direction
         }
 
