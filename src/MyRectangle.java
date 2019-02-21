@@ -1,3 +1,5 @@
+import javafx.geometry.Bounds;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.awt.*;
@@ -11,11 +13,10 @@ public class MyRectangle extends Rectangle implements CollisionObjects {
 
     public boolean detectCollision(Ball ball)
     {
-        Shape awtBall = (java.awt.Shape) ball;
-        Shape thisRectangle = (java.awt.Shape) this;
-        Area playerBall = new Area(awtBall);
-        playerBall.intersect(new Area(thisRectangle));
-        return !playerBall.isEmpty();
+       
+        Bounds player = ball.getBoundsInLocal();
+        Bounds thisRect = this.getBoundsInLocal();
+        return player.intersects(thisRect);
     }
 
 }
