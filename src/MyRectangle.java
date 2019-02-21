@@ -1,16 +1,21 @@
 import javafx.scene.shape.Rectangle;
 
+import java.awt.*;
+import java.awt.geom.Area;
+
 public class MyRectangle extends Rectangle implements CollisionObjects {
 
     public MyRectangle(double x, double y, double width, double height){
         super(x, y, width, height);
     }
 
-    public void collision(Ball ball)
+    public boolean detectCollision(Ball ball)
     {
-        // sjekk for kollisjon med ball
-            // if kollisjon, fra hvilken vinkel?
-                // Gi ball ny vinkel/fart
+        Shape awtBall = (java.awt.Shape) ball;
+        Shape thisRectangle = (java.awt.Shape) this;
+        Area playerBall = new Area(awtBall);
+        playerBall.intersect(new Area(thisRectangle));
+        return !playerBall.isEmpty();
     }
 
 }
