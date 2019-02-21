@@ -53,6 +53,12 @@ public class Ball extends Circle{
         dy += 0.5;
         this.setCenterX(getCenterX());
         this.setCenterY(getCenterY());
+
+        // Gjøre referansen kortere etterhvert
+        for (int i = 0; i < board.getDesign().getObjectArray().size(); i++) {
+            if(board.getDesign().getObjectArray().get(i).detectCollision(this))
+                System.out.print("Collision");
+        }
     }
 
     public void setDx(double dx) {
