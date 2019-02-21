@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 public class Design {
 
-    private ArrayList<Shape> objektArray;
+    private ArrayList<CollisionObjects> objektArray;
     private PinballBoard board;
+
+    public MyRectangle r1;
 
     public Design(PinballBoard board) {
         this.board = board;
@@ -18,11 +20,12 @@ public class Design {
         MyRectangle r1 = new MyRectangle(100, 100, 200, 200);
         objektArray.add(r1);
 
-        board.getMainPane().getChildren().addAll(objektArray);
+        for (CollisionObjects anObjektArray : objektArray)
+            board.getMainPane().getChildren().addAll((Shape) anObjektArray);
 
     }
 
-    public ArrayList<Shape> getObjectArray(){
+    public ArrayList<CollisionObjects> getObjectArray(){
         return objektArray;
     }
 
