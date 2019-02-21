@@ -44,7 +44,7 @@ public class Ball extends Circle{
             dx *= -1; // Change ball move direction
         }
         if (getCenterY() < getRadius() || getCenterY() > board.getMainPane().getHeight() - getRadius()) {
-            dy *= -1; // Change ball move direction
+            dy *= -0.8; // Change ball move direction
         }
 
         // Adjust ball position
@@ -57,7 +57,7 @@ public class Ball extends Circle{
         // Gjøre referansen kortere etterhvert
         for (int i = 0; i < board.getDesign().getObjectArray().size(); i++) {
             if(board.getDesign().getObjectArray().get(i).detectCollision(this))
-                System.out.print("Collision");
+                board.getDesign().getObjectArray().get(i).collisionEvent(this);
         }
     }
 
