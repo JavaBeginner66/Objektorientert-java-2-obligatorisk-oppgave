@@ -7,13 +7,18 @@ public class Design {
     private ArrayList<Shape> objektArray;
     private PinballBoard board;
 
-    public Design(PinballBoard board){
+    public Design(PinballBoard board) {
         this.board = board;
         objectSetup();
-        board.getMainPane().getChildren().addAll(objektArray);
     }
 
     private void objectSetup(){
+        objektArray = new ArrayList<>();
+
+        MyRectangle r1 = new MyRectangle(100, 100, 200, 200);
+        objektArray.add(r1);
+
+        board.getMainPane().getChildren().addAll(objektArray);
 
     }
 
