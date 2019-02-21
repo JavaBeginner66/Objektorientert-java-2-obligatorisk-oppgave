@@ -3,23 +3,20 @@ import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
-public class Ball {
+public class Ball extends Circle{
 
-
-    public final double radius = 20;
-    private double x = radius, y = radius;
-    private double dx = 3, dy = 3;
-    private Circle circle = new Circle(x, y, radius);
     private Timeline animation;
+    private double dx = 1, dy = 1;
 
     PinballBoard pane;
 
-    public Ball(PinballBoard pane) {
-        circle.setFill(Color.GREEN);
+    public Ball(double x, double y, double r, PinballBoard pane) {
+        super(x, y, r);
         this.pane = pane;
-        pane.getMainPane().getChildren().addAll(circle);
+
         // Create an animation for moving the ball
         animation = new Timeline(
                 new KeyFrame(Duration.millis(20), e -> moveBall()));
@@ -43,18 +40,34 @@ public class Ball {
 
     protected void moveBall() {
         // Check boundaries
-        if (x < radius || x > pane.getMainPane().getWidth() - radius) {
+        if (getCenterX() < getRadius() || getCenterX() > pane.getMainPane().getWidth() - getRadius()) {
             dx *= -1; // Change ball move direction
         }
-        if (y < radius || y > pane.getMainPane().getHeight() - radius) {
+        if (getCenterY() < getRadius() || getCenterY() > pane.getMainPane().getHeight() - getRadius()) {
             dy *= -1; // Change ball move direction
         }
 
         // Adjust ball position
-        x += dx;
-        y += dy;
-        dy += 1;
-        circle.setCenterX(x);
-        circle.setCenterY(y);
+        setCenterX(getCenterX() + dx);
+        setCenterY(getCenterY() + dy);
+        dy += 0.5;
+        this.setCenterX(getCenterX());
+        this.setCenterY(getCenterY());
+    }
+
+    public void setDx(double dx) {
+        this.dx = dx;
+    }
+
+    public void setDy(double dy) {
+        this.dy = dy;
+    }
+
+    public double getDx() {
+        return dx;
+    }
+
+    public double getDy() {
+        return dy;
     }
 }
