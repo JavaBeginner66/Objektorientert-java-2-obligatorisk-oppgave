@@ -9,17 +9,18 @@ import javafx.util.Duration;
 public class Ball extends Circle{
 
     private Timeline animation;
-    private BallVector position;
     private BallVector velocity;
     private BallVector speed;
     private double gravity;
     private double bounce;
 
+    private double delta = 0;
+    private double distance = 0;
+
     PinballBoard board;
 
     public Ball(double x, double y, double r, PinballBoard board) {
         super(x, y, r);
-        this.position = new BallVector(x, y);
         this.velocity = new BallVector(5,0.8);
         this.gravity = 0.5;
         this.bounce = 5;
@@ -47,12 +48,20 @@ public class Ball extends Circle{
     }
 
     protected void moveBall() {
+
+
+
+
         // Sjekke om ball treffer ytre boks
         if (getCenterX() < getRadius() || getCenterX() > board.getMainPane().getWidth() - getRadius()) {
             velocity.setX(-velocity.getX());
         }
-        if (getCenterY() < getRadius() || getCenterY() > board.getMainPane().getHeight() - getRadius()) {
-            velocity.setY(-(velocity.getY() - bounce));
+
+        if(board.getMainPane().getHeight() - getRadius() >= delta) {
+            if (getCenterY() < getRadius() || getCenterY() > board.getMainPane().getHeight() - getRadius()) {
+                velocity.setY(-(velocity.getY() - bounce));
+
+            }
         }
 
         // endre position på ball
@@ -63,13 +72,24 @@ public class Ball extends Circle{
 
         // Gjøre referansen kortere etterhvert
         for (int i = 0; i < board.getDesign().getObjectArray().size(); i++) {
-            if(board.getDesign().getObjectArray().get(i).detectCollision(this))
+            if (board.getDesign().getObjectArray().get(i).detectCollision(this)) {
                 board.getDesign().getObjectArray().get(i).collisionEvent(this);
+                System.out.print("collision event");
+            }
         }
+        delta = board.getMainPane().getHeight() - getRadius();
     }
 
     public void newVelocity(BallVector velocity){
         setCenterX(getCenterX() + velocity.getX());
         setCenterY(getCenterY() + velocity.getY());
+    }
+
+    public BallVector getVelocity() {
+        return velocity;
+    }
+
+    public void setVelocity(BallVector velocity) {
+        this.velocity = velocity;
     }
 }

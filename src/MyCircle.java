@@ -15,6 +15,7 @@ public class MyCircle extends Circle implements CollisionObjects{
     }
 
     public void collisionEvent(Ball ball){
-
+        // Midlertidig
+        ball.setVelocity(new BallVector(-ball.getVelocity().getX(), -ball.getVelocity().getY()));
     }
 }
