@@ -16,7 +16,7 @@ public class PinballBoard extends Application {
     public void start(Stage stage) {
 
         mainPane = new BorderPane();
-        ball = new Ball(20, 20, 20, this);
+        ball = new Ball(150, 50, 20, this);
         design = new Design(this);
 
 

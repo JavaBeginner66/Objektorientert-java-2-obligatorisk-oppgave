@@ -58,7 +58,7 @@ public class Ball extends Circle{
         }
 
         if(board.getMainPane().getHeight() - getRadius() >= delta) {
-            if (getCenterY() < getRadius() || getCenterY() > board.getMainPane().getHeight() - getRadius()) {
+            if (getCenterY() <= getRadius() || getCenterY() >= board.getMainPane().getHeight() - getRadius()) {
                 velocity.setY(-(velocity.getY() - bounce));
 
             }
@@ -91,5 +91,9 @@ public class Ball extends Circle{
 
     public void setVelocity(BallVector velocity) {
         this.velocity = velocity;
+    }
+
+    public double getBounce() {
+        return bounce;
     }
 }
