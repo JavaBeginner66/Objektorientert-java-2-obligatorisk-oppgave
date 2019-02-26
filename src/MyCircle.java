@@ -9,13 +9,16 @@ public class MyCircle extends Circle implements CollisionObjects{
 
     public boolean detectCollision(Ball ball)
     {
-        Bounds player = ball.getBoundsInLocal();
-        Bounds thisRect = this.getBoundsInLocal();
-        return player.intersects(thisRect);
+        double distance = Math.sqrt((ball.getCenterX() - this.getCenterX())
+                                  * (ball.getCenterX() - this.getCenterX())
+                                  + (ball.getCenterY() - this.getCenterY())
+                                  * (ball.getCenterY() - this.getCenterY()));
+
+        return (ball.getRadius() + this.getRadius() >= distance);
     }
 
     public void collisionEvent(Ball ball){
-        // Midlertidig
-        ball.setVelocity(new BallVector(-ball.getVelocity().getX(), -ball.getVelocity().getY()));
+        // Midlertidig (Snur bare om på velocity)
+        ball.setVelocity(new BallVector(-ball.getVelocity().getX(), (-ball.getVelocity().getY() +ball.getBounce())));
     }
 }
