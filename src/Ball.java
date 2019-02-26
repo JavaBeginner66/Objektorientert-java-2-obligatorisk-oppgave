@@ -9,12 +9,20 @@ import javafx.util.Duration;
 public class Ball extends Circle{
 
     private Timeline animation;
-    private double dx = 1, dy = 1;
+    private BallVector position;
+    private BallVector velocity;
+    private BallVector speed;
+    private double gravity;
+    private double bounce;
 
     PinballBoard board;
 
     public Ball(double x, double y, double r, PinballBoard board) {
         super(x, y, r);
+        this.position = new BallVector(x, y);
+        this.velocity = new BallVector(5,0.8);
+        this.gravity = 0.5;
+        this.bounce = 5;
         this.board = board;
 
         // Create an animation for moving the ball
@@ -39,20 +47,19 @@ public class Ball extends Circle{
     }
 
     protected void moveBall() {
-        // Check boundaries
+        // Sjekke om ball treffer ytre boks
         if (getCenterX() < getRadius() || getCenterX() > board.getMainPane().getWidth() - getRadius()) {
-            dx *= -1; // Change ball move direction
+            velocity.setX(-velocity.getX());
         }
         if (getCenterY() < getRadius() || getCenterY() > board.getMainPane().getHeight() - getRadius()) {
-            dy *= -0.8; // Change ball move direction
+            velocity.setY(-(velocity.getY() - bounce));
         }
 
-        // Adjust ball position
-        setCenterX(getCenterX() + dx);
-        setCenterY(getCenterY() + dy);
-        dy += 0.5;
-        this.setCenterX(getCenterX());
-        this.setCenterY(getCenterY());
+        // endre position på ball
+        newVelocity(velocity);
+        velocity.setY(velocity.getY() + gravity);
+
+
 
         // Gjøre referansen kortere etterhvert
         for (int i = 0; i < board.getDesign().getObjectArray().size(); i++) {
@@ -61,19 +68,8 @@ public class Ball extends Circle{
         }
     }
 
-    public void setDx(double dx) {
-        this.dx = dx;
-    }
-
-    public void setDy(double dy) {
-        this.dy = dy;
-    }
-
-    public double getDx() {
-        return dx;
-    }
-
-    public double getDy() {
-        return dy;
+    public void newVelocity(BallVector velocity){
+        setCenterX(getCenterX() + velocity.getX());
+        setCenterY(getCenterY() + velocity.getY());
     }
 }
