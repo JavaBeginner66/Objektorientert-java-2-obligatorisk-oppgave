@@ -17,9 +17,9 @@ public class Ball extends Circle{
     private double delta = 0;
     private double distance = 0;
 
-    PinballBoard board;
+    GameManager board;
 
-    public Ball(double x, double y, double r, PinballBoard board) {
+    public Ball(double x, double y, double r, GameManager board) {
         super(x, y, r);
         this.velocity = new BallVector(5,0.8);
         this.gravity = 0.5;
