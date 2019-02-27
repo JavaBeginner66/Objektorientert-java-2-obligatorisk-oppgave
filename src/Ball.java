@@ -1,9 +1,7 @@
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
 public class Ball extends Circle{
@@ -14,12 +12,10 @@ public class Ball extends Circle{
     private double gravity;
     private double bounce;
 
-    private double delta = 0;
-    private double distance = 0;
+    GameManager board;
 
-    PinballBoard board;
 
-    public Ball(double x, double y, double r, PinballBoard board) {
+    public Ball(double x, double y, double r, GameManager board) {
         super(x, y, r);
         this.velocity = new BallVector(5,0.8);
         this.gravity = 0.5;
@@ -28,7 +24,7 @@ public class Ball extends Circle{
 
         // Create an animation for moving the ball
         animation = new Timeline(
-                new KeyFrame(Duration.millis(20), e -> moveBall()));
+                new KeyFrame(Duration.millis(30), e -> moveBall()));
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.play(); // Start animation
     }
@@ -49,26 +45,19 @@ public class Ball extends Circle{
 
     protected void moveBall() {
 
-
-
-
         // Sjekke om ball treffer ytre boks
         if (getCenterX() < getRadius() || getCenterX() > board.getMainPane().getWidth() - getRadius()) {
             velocity.setX(-velocity.getX());
         }
 
-        if(board.getMainPane().getHeight() - getRadius() >= delta) {
-            if (getCenterY() <= getRadius() || getCenterY() >= board.getMainPane().getHeight() - getRadius()) {
-                velocity.setY(-(velocity.getY() - bounce));
-
-            }
+        if (getCenterY() <= getRadius() || getCenterY() >= board.getMainPane().getHeight() - getRadius()) {
+            velocity.setY(-(velocity.getY() - bounce));
         }
+
 
         // endre position på ball
         newVelocity(velocity);
         velocity.setY(velocity.getY() + gravity);
-
-
 
         // Gjøre referansen kortere etterhvert
         for (int i = 0; i < board.getDesign().getObjectArray().size(); i++) {
@@ -77,7 +66,6 @@ public class Ball extends Circle{
                 System.out.print("collision event");
             }
         }
-        delta = board.getMainPane().getHeight() - getRadius();
     }
 
     public void newVelocity(BallVector velocity){
@@ -95,5 +83,9 @@ public class Ball extends Circle{
 
     public double getBounce() {
         return bounce;
+    }
+
+    public GameManager getBoard() {
+        return board;
     }
 }
