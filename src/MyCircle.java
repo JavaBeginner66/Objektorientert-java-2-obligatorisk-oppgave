@@ -20,5 +20,8 @@ public class MyCircle extends Circle implements CollisionObjects{
     public void collisionEvent(Ball ball){
         // Midlertidig (Snur bare om på velocity)
         ball.setVelocity(new BallVector(-ball.getVelocity().getX(), (-ball.getVelocity().getY() +ball.getBounce())));
+        // Legger til poeng på score
+        ball.getBoard().getScoreGui().setScore(ball.getBoard().getScoreGui().getScore()+25);
+        ball.getBoard().getScoreGui().getLabelScore().setText("Score: " + ball.getBoard().getScoreGui().getScore());
     }
 }

@@ -12,6 +12,8 @@ public class ScoreGui extends VBox {
     private Label labelScore;
     private Label ballsLeft;
 
+    private int score;
+
     public ScoreGui(GameManager board){
         this.board = board;
         setup();
@@ -35,31 +37,25 @@ public class ScoreGui extends VBox {
         return board;
     }
 
-    public void setBoard(GameManager board) {
-        this.board = board;
-    }
 
     public Label getLabelTime() {
         return labelTime;
     }
 
-    public void setLabelTime(Label labelTime) {
-        this.labelTime = labelTime;
-    }
 
     public Label getLabelScore() {
         return labelScore;
-    }
-
-    public void setLabelScore(Label labelScore) {
-        this.labelScore = labelScore;
     }
 
     public Label getBallsLeft() {
         return ballsLeft;
     }
 
-    public void setBallsLeft(Label ballsLeft) {
-        this.ballsLeft = ballsLeft;
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

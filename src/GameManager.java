@@ -20,7 +20,7 @@ public class GameManager extends Application {
         gameRunning = true;
 
         mainPane = new BorderPane();
-        ball = new Ball(150, 50, 20, this);
+        ball = new Ball(70, 50, 20, this);
         design = new Design(this);
         score = new ScoreGui(this);
 
@@ -28,7 +28,7 @@ public class GameManager extends Application {
 
         mainPane.getChildren().addAll(ball);
 
-        startTimer();
+        //startTimer();
 
         Scene scene = new Scene(mainPane, 650, 950);
         stage.setTitle("Pinball");
@@ -71,5 +71,9 @@ public class GameManager extends Application {
 
     public static void main(String args[]){
         launch(args);
+    }
+
+    public ScoreGui getScoreGui() {
+        return score;
     }
 }
