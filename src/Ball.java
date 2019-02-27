@@ -14,6 +14,10 @@ public class Ball extends Circle{
 
     GameManager board;
 
+<<<<<<< HEAD
+=======
+    GameManager board;
+>>>>>>> master
 
     public Ball(double x, double y, double r, GameManager board) {
         super(x, y, r);
