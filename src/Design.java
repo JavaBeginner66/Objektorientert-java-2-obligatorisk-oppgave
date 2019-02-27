@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Design {
 
     private ArrayList<CollisionObjects> objektArray;
-    private PinballBoard board;
+    private GameManager board;
 
-    public Design(PinballBoard board) {
+    public Design(GameManager board) {
         this.board = board;
         objectSetup();
     }
