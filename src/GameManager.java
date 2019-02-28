@@ -9,6 +9,8 @@ import java.awt.*;
 
 public class GameManager extends Application {
 
+    public static AudioClip sound = new AudioClip("https://www.pacdv.com/sounds/people_sound_effects/baby-sneezing-1.wav");
+
     private BorderPane mainPane;
     private Ball ball;
     private Design design;
@@ -29,10 +31,6 @@ public class GameManager extends Application {
 
         mainPane.getChildren().addAll(ball);
 
-        try {
-            AudioClip plonkSound = new AudioClip("C:\\Users\\Jan Andreas\\IdeaProjects\\Objektorientert-java-2-obligatorisk-oppgave\\src\\poker-chips-daniel_simon.mp3");
-            plonkSound.play();
-        }catch(Exception e){}
 
         //startTimer();
 

@@ -1,4 +1,5 @@
 
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
@@ -17,6 +18,13 @@ public class Events {
     
 
     public void colorTicker(Shape object) {
+
+        try {
+            GameManager.sound.play();
+        }catch(Exception e){
+            System.out.print("Failed");
+        }
+
         Thread tick = new Thread() {
             Random random = new Random();
             Color[] colors = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.PINK, Color.CYAN};
