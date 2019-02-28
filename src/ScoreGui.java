@@ -8,9 +8,10 @@ import javafx.scene.text.FontWeight;
 public class ScoreGui extends VBox {
 
     private GameManager board;
-    private Label labelTime;
-    private Label labelScore;
-    private Label ballsLeft;
+
+    public static Label labelTime;
+    public static Label labelScore;
+    public static Label ballsLeft;
 
     private int score;
 
