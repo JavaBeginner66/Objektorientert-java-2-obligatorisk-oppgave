@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import java.awt.*;
 
@@ -27,6 +28,11 @@ public class GameManager extends Application {
         mainPane.setTop(score);
 
         mainPane.getChildren().addAll(ball);
+
+        try {
+            AudioClip plonkSound = new AudioClip("C:\\Users\\Jan Andreas\\IdeaProjects\\Objektorientert-java-2-obligatorisk-oppgave\\src\\poker-chips-daniel_simon.mp3");
+            plonkSound.play();
+        }catch(Exception e){}
 
         //startTimer();
 
