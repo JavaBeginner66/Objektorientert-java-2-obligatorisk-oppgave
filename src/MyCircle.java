@@ -1,4 +1,5 @@
 import javafx.geometry.Bounds;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class MyCircle extends Circle implements CollisionObjects{
@@ -23,5 +24,6 @@ public class MyCircle extends Circle implements CollisionObjects{
         // Legger til poeng på score
         ball.getBoard().getScoreGui().setScore(ball.getBoard().getScoreGui().getScore()+25);
         ball.getBoard().getScoreGui().getLabelScore().setText("Score: " + ball.getBoard().getScoreGui().getScore());
+        Events tick = new Events(this);
     }
 }
