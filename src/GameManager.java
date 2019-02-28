@@ -35,27 +35,6 @@ public class GameManager extends Application {
         stage.setScene(scene);
         stage.show();
     }
-/*
-    public void startTimer(){
-        Thread clock = new Thread(){
-            public void run(){
-                double count =0;
-                while(gameRunning){
-                    ScoreGui.labelTime.setText(String.valueOf(count));
-                    System.out.print(count);
-                    count++;
-                    try {
-                        sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        };
-        clock.start();
-    }
-*/
-
 
     public BorderPane getMainPane(){
         return mainPane;
