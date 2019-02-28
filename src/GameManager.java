@@ -41,7 +41,7 @@ public class GameManager extends Application {
             public void run(){
                 double count =0;
                 while(gameRunning){
-                    score.getLabelTime().setText(String.valueOf(count));
+                    ScoreGui.labelTime.setText(String.valueOf(count));
                     System.out.print(count);
                     count++;
                     try {
@@ -54,7 +54,7 @@ public class GameManager extends Application {
         };
         clock.start();
     }
-    */
+*/
 
 
     public BorderPane getMainPane(){

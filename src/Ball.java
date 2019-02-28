@@ -62,7 +62,6 @@ public class Ball extends Circle{
         for (int i = 0; i < board.getDesign().getObjectArray().size(); i++) {
             if (board.getDesign().getObjectArray().get(i).detectCollision(this)) {
                 board.getDesign().getObjectArray().get(i).collisionEvent(this);
-                System.out.print("collision event");
             }
         }
     }
