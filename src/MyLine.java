@@ -5,6 +5,7 @@ public class MyLine extends Line implements CollisionObjects{
 
     public MyLine(double startX, double startY, double endX, double endY){
         super(startX, startY, endX, endY);
+        setStrokeWidth(7);
     }
 
     public boolean detectCollision(Ball ball)
@@ -17,6 +18,6 @@ public class MyLine extends Line implements CollisionObjects{
 
     public void collisionEvent(Ball ball){
         // Hardkoder ball til å sprette mot venstre
-        ball.setVelocity(new BallVector(ball.getVelocity().getX()-10, 5));
+        ball.setVelocity(new BallVector(ball.getVelocity().getX()-10, 10));
     }
 }

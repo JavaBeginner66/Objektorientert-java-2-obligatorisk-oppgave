@@ -19,7 +19,7 @@ public class MyRectangle extends Rectangle implements CollisionObjects {
     }
 
     public void collisionEvent(Ball ball){
-
+        ball.setVelocity(new BallVector(-ball.getVelocity().getX(), ball.getVelocity().getY()));
     }
 
 }

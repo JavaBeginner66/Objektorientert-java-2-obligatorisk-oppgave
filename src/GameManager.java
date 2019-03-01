@@ -18,6 +18,7 @@ public class GameManager {
         this.board = board;
         player = new Player();
         gameRunning = false;
+        gameOver = false;
         newBall();
     }
 
@@ -26,9 +27,9 @@ public class GameManager {
             animation.stop();
 
         if(!ballsLeft())
-            System.out.println("Game over");
+            gameOver = true;
 
-        ball = new Ball(570, 800, 20, board);
+        ball = new Ball(600, 800, 20, board);
         board.getMainPane().getChildren().add(ball);
         System.out.println("   Velocity x: " + ball.getVelocity().getX() + "   Velocity y: " +  ball.getVelocity().getY());
 
