@@ -12,18 +12,17 @@ public class Ball extends Circle{
     private double gravity;
     private double bounce;
 
-    GameManager board;
+    GameBoard board;
 
-    public Ball(double x, double y, double r, GameManager board) {
+    public Ball(double x, double y, double r, GameBoard board) {
         super(x, y, r);
-        this.velocity = new BallVector(5,0.8);
+        this.velocity = new BallVector(0,-40);
         this.gravity = 0.5;
         this.bounce = 5;
         this.board = board;
 
         // Create an animation for moving the ball
-        animation = new Timeline(
-                new KeyFrame(Duration.millis(30), e -> moveBall()));
+        animation = new Timeline(new KeyFrame(Duration.millis(30), e -> moveBall()));
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.play(); // Start animation
     }
@@ -44,24 +43,31 @@ public class Ball extends Circle{
 
     protected void moveBall() {
 
-        // Sjekke om ball treffer ytre boks
-        if (getCenterX() < getRadius() || getCenterX() > board.getMainPane().getWidth() - getRadius()) {
-            velocity.setX(-velocity.getX());
-        }
+        if(GameManager.gameRunning) {
 
-        if (getCenterY() <= getRadius() || getCenterY() >= board.getMainPane().getHeight() - getRadius()) {
-            velocity.setY(-(velocity.getY() - bounce));
-        }
+            // Sjekke om ball treffer ytre boks
+            if (getCenterX() < getRadius() || getCenterX() > board.getMainPane().getWidth() - getRadius()) {
+                velocity.setX(-velocity.getX());
+            }
+
+            if (getCenterY() <= getRadius() || getCenterY() >= board.getMainPane().getHeight() - getRadius()) {
+                velocity.setY(-(velocity.getY() - bounce));
+                if (getCenterY() > board.getMainPane().getHeight() + 50) {
+                    GameManager.gameRunning = false;
+                }
+            }
 
 
-        // endre position på ball
-        newVelocity(velocity);
-        velocity.setY(velocity.getY() + gravity);
+            // endre position på ball
+            newVelocity(velocity);
+            velocity.setY(velocity.getY() + gravity);
 
-        // Gjøre referansen kortere etterhvert
-        for (int i = 0; i < board.getDesign().getObjectArray().size(); i++) {
-            if (board.getDesign().getObjectArray().get(i).detectCollision(this)) {
-                board.getDesign().getObjectArray().get(i).collisionEvent(this);
+            // Gjøre referansen kortere etterhvert
+            for (int i = 0; i < board.getDesign().getObjectArray().size(); i++) {
+                if (board.getDesign().getObjectArray().get(i).detectCollision(this)) {
+                    board.getDesign().getObjectArray().get(i).collisionEvent(this);
+                    System.out.print("collision");
+                }
             }
         }
     }
@@ -83,7 +89,7 @@ public class Ball extends Circle{
         return bounce;
     }
 
-    public GameManager getBoard() {
+    public GameBoard getBoard() {
         return board;
     }
 }
