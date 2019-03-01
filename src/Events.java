@@ -20,7 +20,7 @@ public class Events {
     public void colorTicker(Shape object) {
 
         try {
-            GameManager.sound.play();
+            //GameBoard.sound.play();
         }catch(Exception e){
             System.out.print("Failed");
         }
