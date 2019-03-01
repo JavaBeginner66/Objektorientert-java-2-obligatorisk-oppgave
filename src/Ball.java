@@ -6,13 +6,14 @@ import javafx.util.Duration;
 
 public class Ball extends Circle{
 
-    private Timeline animation;
     private BallVector velocity;
     private BallVector speed;
+
+    private GameBoard board;
+
     private double gravity;
     private double bounce;
 
-    GameBoard board;
 
     public Ball(double x, double y, double r, GameBoard board) {
         super(x, y, r);
@@ -20,56 +21,6 @@ public class Ball extends Circle{
         this.gravity = 0.5;
         this.bounce = 5;
         this.board = board;
-
-        // Create an animation for moving the ball
-        animation = new Timeline(new KeyFrame(Duration.millis(30), e -> moveBall()));
-        animation.setCycleCount(Timeline.INDEFINITE);
-        animation.play(); // Start animation
-    }
-
-
-    public void increaseSpeed() {
-        animation.setRate(animation.getRate() + 0.1);
-    }
-
-    public void decreaseSpeed() {
-        animation.setRate(
-                animation.getRate() > 0 ? animation.getRate() - 0.1 : 0);
-    }
-
-    public DoubleProperty rateProperty() {
-        return animation.rateProperty();
-    }
-
-    protected void moveBall() {
-
-        if(GameManager.gameRunning) {
-
-            // Sjekke om ball treffer ytre boks
-            if (getCenterX() < getRadius() || getCenterX() > board.getMainPane().getWidth() - getRadius()) {
-                velocity.setX(-velocity.getX());
-            }
-
-            if (getCenterY() <= getRadius() || getCenterY() >= board.getMainPane().getHeight() - getRadius()) {
-                velocity.setY(-(velocity.getY() - bounce));
-                if (getCenterY() > board.getMainPane().getHeight() + 50) {
-                    GameManager.gameRunning = false;
-                }
-            }
-
-
-            // endre position på ball
-            newVelocity(velocity);
-            velocity.setY(velocity.getY() + gravity);
-
-            // Gjøre referansen kortere etterhvert
-            for (int i = 0; i < board.getDesign().getObjectArray().size(); i++) {
-                if (board.getDesign().getObjectArray().get(i).detectCollision(this)) {
-                    board.getDesign().getObjectArray().get(i).collisionEvent(this);
-                    System.out.print("collision");
-                }
-            }
-        }
     }
 
     public void newVelocity(BallVector velocity){
@@ -91,5 +42,13 @@ public class Ball extends Circle{
 
     public GameBoard getBoard() {
         return board;
+    }
+
+    public double getGravity() {
+        return gravity;
+    }
+
+    public void setGravity(double gravity) {
+        this.gravity = gravity;
     }
 }
