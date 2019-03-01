@@ -1,13 +1,16 @@
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import java.awt.*;
+import javafx.event.Event;
 
 
-public class GameBoard extends Application {
+public class GameBoard extends Application{
 
     //public final static AudioClip sound = new AudioClip("https://www.pacdv.com/sounds/people_sound_effects/baby-sneezing-1.wav");
 
@@ -26,10 +29,23 @@ public class GameBoard extends Application {
 
         mainPane.setTop(score);
 
+
         Scene scene = new Scene(mainPane, 650, 950);
+
+        flipperControll(scene);
+
         stage.setTitle("Pinball");
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void flipperControll(Scene scene){
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                System.out.print(event);
+            }
+        });
     }
 
     protected void moveBall(Ball ball) {
@@ -54,6 +70,7 @@ public class GameBoard extends Application {
             }
 
 
+
             // endre position på ball
             ball.newVelocity(ball.getVelocity());
             ball.getVelocity().setY(ball.getVelocity().getY() + ball.getGravity());
@@ -65,10 +82,7 @@ public class GameBoard extends Application {
                 }
             }
         }
-
-
-
-        }
+    }
 
 
 
