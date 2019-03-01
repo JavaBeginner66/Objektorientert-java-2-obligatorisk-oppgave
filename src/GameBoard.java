@@ -36,8 +36,6 @@ public class GameBoard extends Application {
 
         // Spill-loopen
 
-        System.out.print(GameManager.gameRunning);
-        System.out.println(ball);
         if(GameManager.gameRunning) {
 
             // Sjekke om ball treffer ytre boks
@@ -45,11 +43,14 @@ public class GameBoard extends Application {
                 ball.getVelocity().setX(-ball.getVelocity().getX());
             }
 
-            if (ball.getCenterY() <= ball.getRadius() || ball.getCenterY() >= mainPane.getHeight() - ball.getRadius()) {
+            if (ball.getCenterY() <= ball.getRadius()) {
                 ball.getVelocity().setY(-(ball.getVelocity().getY()));
-                if (ball.getCenterY() > mainPane.getHeight() + 50) {
-                    GameManager.gameRunning = false;
-                }
+            }
+
+            if(ball.getCenterY() >= mainPane.getHeight() - ball.getRadius()){
+                GameManager.gameRunning = false;
+                mainPane.getChildren().remove(ball);
+                manager.newBall();
             }
 
 
@@ -64,10 +65,7 @@ public class GameBoard extends Application {
                 }
             }
         }
-        else if(!GameManager.gameRunning) {
-            //manager.newBall();
-            System.out.println("yo");
-        }
+
 
 
         }
