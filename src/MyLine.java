@@ -17,6 +17,6 @@ public class MyLine extends Line implements CollisionObjects{
 
     public void collisionEvent(Ball ball){
         // Hardkoder ball til å sprette mot venstre
-        ball.setVelocity(new BallVector(ball.getVelocity().getX()-20, 0));
+        ball.setVelocity(new BallVector(ball.getVelocity().getX()-10, 5));
     }
 }

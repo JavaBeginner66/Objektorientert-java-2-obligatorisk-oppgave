@@ -22,7 +22,7 @@ public class ScoreGui extends VBox {
 
     private void setup(){
         labelTime = new Label();
-        ballsLeft = new Label("Balls: ");
+        ballsLeft = new Label();
         labelScore = new Label("Score: ");
         labelScore.setFont(Font.font("Monospace",
                 FontWeight.BOLD, FontPosture.REGULAR, 20));
