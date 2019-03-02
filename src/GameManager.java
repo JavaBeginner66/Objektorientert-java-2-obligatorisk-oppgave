@@ -29,14 +29,16 @@ public class GameManager {
 
         scoreScreen = new TopScores();
         board.getMainPane().setCenter(scoreScreen);
+        player.setScore(board.getScoreGui().getScore());
+        scoreScreen.writeToScoreList(player);
         scoreScreen.playAgain.setOnAction(e -> {
-            scoreScreen.scoreListManager( player/* send inn her */);
             board.getMainPane().setCenter(null);
             newGame();
         });
     }
 
     private void newGame(){
+        board.getScoreGui().setScore(0);
         player = new Player(enterName());
         ScoreGui.ballsLeft.setText("Balls: " + player.getBalls());
         gameOver = false;
@@ -78,9 +80,14 @@ public class GameManager {
 
     // Skulle gjerne lagd en javafx gui for denne, men for lite tid
     private String enterName(){
-        String name = JOptionPane.showInputDialog("Navn:");
-        if(name.equals("")){
-            name = "Anonym";
+        String name = "";
+        try {
+            name = JOptionPane.showInputDialog("Navn:");
+            if (name.equals("")) {
+                name = "Anonym";
+            }
+        }catch (NullPointerException e){
+                name = "Anonym";
         }
         return name;
     }
