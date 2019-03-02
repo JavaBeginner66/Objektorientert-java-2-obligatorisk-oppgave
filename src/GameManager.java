@@ -53,13 +53,34 @@ public class GameManager {
         ball.setOnMouseClicked(e -> gameRunning = true);
     }
 
+    public void newBallConditionCheck(){
+        if(animation != null)
+            animation.stop();
+
+        if(!ballsLeft()) {
+            gameOver = true;
+            gameOver();
+        }
+
+        if(!gameOver)
+            nextBall();
+    }
+
     private boolean ballsLeft(){
 
-        ScoreGui.ballsLeft.setText("Balls: " + player.getBalls());
         player.setBalls(player.getBalls()-1);
+        ScoreGui.ballsLeft.setText("Balls: " + player.getBalls());
 
-        return!(player.getBalls() < 0);
+        return!(player.getBalls() <= 0);
+    }
 
+    // Skulle gjerne lagd en javafx gui for denne, men for lite tid
+    private String enterName(){
+        String name = JOptionPane.showInputDialog("Navn:");
+        if(name.equals("")){
+            name = "Anonym";
+        }
+        return name;
     }
 
 
