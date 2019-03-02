@@ -1,11 +1,16 @@
-public class Player {
+import java.io.Serializable;
 
-    private int balls;
+public class Player implements Serializable {
+
+    private static final long serialVersionUID = 475918891428093041L;
+    private transient int balls;
     private int score;
+    private String name;
 
-    public Player(){
+    public Player(String name){
         this.balls = 5;
         this.score = 0;
+        this.name = name;
     }
 
     public int getBalls() {
@@ -22,5 +27,10 @@ public class Player {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "Navn: " + name + ", Score: " + score;
     }
 }
