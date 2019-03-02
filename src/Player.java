@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public class Player implements Serializable {
+public class Player implements Serializable, Comparable<Player> {
 
 
     private static final long serialVersionUID = 4694861542429517006L;
@@ -35,5 +35,10 @@ public class Player implements Serializable {
     @Override
     public String toString() {
         return "Navn: " + name + ", Score: " + score;
+    }
+
+    @Override
+    public int compareTo(Player p) {
+        return Integer.compare(this.score, p.score);
     }
 }

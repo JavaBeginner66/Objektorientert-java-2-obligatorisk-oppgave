@@ -1,3 +1,5 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,10 +10,13 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
 import java.io.*;
+import java.util.Collections;
 
 public class TopScores extends GridPane {
 
     public Button playAgain;
+
+    private ObservableList<Player> scoreList = FXCollections.observableArrayList();
 
     public TopScores(){
 
@@ -28,7 +33,7 @@ public class TopScores extends GridPane {
         this.setStyle("-fx-background-color: #c4c4c4;");
         this.add(gameOver, 0,0);
         this.add(playAgain, 0, 999);
-        this.setPadding(new Insets(100, 0, 0,225));
+        this.setPadding(new Insets(100, 0, 0,150));
 
     }
 
@@ -61,21 +66,16 @@ public class TopScores extends GridPane {
             fileIn = new FileInputStream("scores");
 
             try {
-                int count = 1;
-                for (; ; ) {
+
+                for (; ;) {
                     ObjectInputStream in = new ObjectInputStream(fileIn);
                     Player player = (Player) in.readObject();
-                    Label scorer = new Label(count + ": " + player);
-                    scorer.setPadding(new Insets(10, 0, 10, 0));
-                    setStyle(scorer);
-                    this.add(scorer, 0, count);
-                    count++;
+                    scoreList.add(player);
                 }
-
 
             } catch (EOFException e) {
                 fileIn.close();
-
+                displayTopList();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -84,6 +84,19 @@ public class TopScores extends GridPane {
                 e.printStackTrace();
             }
         }catch(Exception e){}
+    }
+
+    private void displayTopList(){
+        
+        Collections.sort(scoreList);
+        Collections.reverse(scoreList);
+
+        for(int i = 0; i<10; i++){
+            Label scorer = new Label(i+1 + ": " + scoreList.get(i));
+            scorer.setPadding(new Insets(10, 0, 10, 0));
+            setStyle(scorer);
+            this.add(scorer, 0, i+1);
+        }
     }
 
     private void setStyle(Label label){
