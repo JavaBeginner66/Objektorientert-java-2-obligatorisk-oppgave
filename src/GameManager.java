@@ -14,21 +14,34 @@ public class GameManager {
 
     private Animation animation;
 
+    private TopScores scoreScreen;
+
     public GameManager(GameBoard board){
         this.board = board;
-        player = new Player();
         gameRunning = false;
         gameOver = false;
-        newBall();
+        newGame();
     }
 
-    public void newBall(){
-        if(animation != null)
-            animation.stop();
+    private void gameOver(){
 
-        if(!ballsLeft())
-            gameOver = true;
+        scoreScreen = new TopScores();
+        board.getMainPane().setCenter(scoreScreen);
+        scoreScreen.playAgain.setOnAction(e -> {
+            scoreScreen.scoreListManager( player/* send inn her */);
+            board.getMainPane().setCenter(null);
+            newGame();
+        });
+    }
 
+    private void newGame(){
+        player = new Player(enterName());
+        ScoreGui.ballsLeft.setText("Balls: " + player.getBalls());
+        gameOver = false;
+        nextBall();
+    }
+
+    private void nextBall(){
         ball = new Ball(600, 800, 20, board);
         board.getMainPane().getChildren().add(ball);
 
