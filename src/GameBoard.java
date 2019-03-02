@@ -32,10 +32,10 @@ public class GameBoard extends Application{
         mainPane = new BorderPane();
         design = new Design(this);
         score = new ScoreGui(this);
-        manager = new GameManager(this);
 
         mainPane.setTop(score);
         scene = new Scene(mainPane, 650, 950);
+        manager = new GameManager(this);
         flipperControll();
 
         stage.setTitle("Pinball");
@@ -79,7 +79,7 @@ public class GameBoard extends Application{
 
             // Sjekke om ball treffer ytre boks
             if (ball.getCenterX() < ball.getRadius() || ball.getCenterX() > mainPane.getWidth() - ball.getRadius()) {
-                ball.getVelocity().setX(-ball.getVelocity().getX()+20);
+                ball.getVelocity().setX(-ball.getVelocity().getX());
             }
 
             if (ball.getCenterY() <= ball.getRadius()) {
@@ -89,7 +89,7 @@ public class GameBoard extends Application{
             if(ball.getCenterY() >= mainPane.getHeight() - ball.getRadius()){
                 GameManager.gameRunning = false;
                 mainPane.getChildren().remove(ball);
-                manager.newBall();
+                manager.newBallConditionCheck();
             }
 
             // endre position på ball
