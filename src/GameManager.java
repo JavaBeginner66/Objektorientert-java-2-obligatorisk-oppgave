@@ -3,6 +3,8 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 
+import javax.swing.*;
+
 public class GameManager {
 
     public static boolean gameRunning;
