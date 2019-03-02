@@ -23,9 +23,9 @@ public class Design {
 
 
 
-        MyCircle c1 = new MyCircle(200, 750, 100);
+        MyCircle c1 = new MyCircle(200, 350, 50);
 
-        MyCircle c2 = new MyCircle(400, 900, 50);
+        MyCircle c2 = new MyCircle(400, 500, 25);
 
         MyLine line = new MyLine(550, 0, 650, 100);
         MyRectangle l2 = new MyRectangle(540, 200, 10, 950);
@@ -34,8 +34,8 @@ public class Design {
         MyLine l4 = new MyLine(450, 950, 545, 830);
 
         objektArray = new ArrayList<>();
-        //objektArray.add(c1);
-        //objektArray.add(c2);
+        objektArray.add(c1);
+        objektArray.add(c2);
         objektArray.add(line);
         objektArray.add(l2);
         objektArray.add(f1);

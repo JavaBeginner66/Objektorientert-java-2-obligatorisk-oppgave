@@ -23,8 +23,6 @@ public class GameBoard extends Application{
     private ScoreGui score;
     private GameManager manager;
     private Scene scene;
-    private RotateTransition rt1;
-    private RotateTransition rt2;
 
     @Override
     public void start(Stage stage) {
@@ -45,13 +43,13 @@ public class GameBoard extends Application{
 
     public void flipperControll() {
 
-        rt1 = new RotateTransition(Duration.millis(100), (design.f1));
+        RotateTransition rt1 = new RotateTransition(Duration.millis(100), (design.f1));
         rt1.setFromAngle(0);
         rt1.setToAngle(-80);
         rt1.setCycleCount(2);
         rt1.setAutoReverse(true);
 
-        rt2 = new RotateTransition(Duration.millis(100), (design.f2));
+        RotateTransition rt2 = new RotateTransition(Duration.millis(100), (design.f2));
         rt2.setFromAngle(0);
         rt2.setToAngle(80);
         rt2.setCycleCount(2);
@@ -102,6 +100,8 @@ public class GameBoard extends Application{
                     design.getObjectArray().get(i).collisionEvent(ball);
                 }
             }
+            // Oppdaterer score hver frame
+            ScoreGui.labelScore.setText("Score: " + score.getScore());
         }
     }
 

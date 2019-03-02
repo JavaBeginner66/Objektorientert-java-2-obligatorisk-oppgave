@@ -2,13 +2,16 @@ import java.io.Serializable;
 
 public class Player implements Serializable {
 
-    private static final long serialVersionUID = 475918891428093041L;
+
+    private static final long serialVersionUID = 4694861542429517006L;
     private transient int balls;
     private int score;
     private String name;
 
+    public Player(){}
+
     public Player(String name){
-        this.balls = 5;
+        this.balls = 1;
         this.score = 0;
         this.name = name;
     }
