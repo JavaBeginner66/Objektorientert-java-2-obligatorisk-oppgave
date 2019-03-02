@@ -31,11 +31,11 @@ public class GameManager {
 
         ball = new Ball(600, 800, 20, board);
         board.getMainPane().getChildren().add(ball);
-        System.out.println("   Velocity x: " + ball.getVelocity().getX() + "   Velocity y: " +  ball.getVelocity().getY());
 
         animation = new Timeline(new KeyFrame(Duration.millis(30), e -> board.moveBall(ball)));
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.play();
+
 
         ball.setOnMouseClicked(e -> gameRunning = true);
     }
@@ -44,10 +44,10 @@ public class GameManager {
 
         ScoreGui.ballsLeft.setText("Balls: " + player.getBalls());
         player.setBalls(player.getBalls()-1);
-        System.out.print(player.getBalls());
 
         return!(player.getBalls() < 0);
 
     }
+
 
 }

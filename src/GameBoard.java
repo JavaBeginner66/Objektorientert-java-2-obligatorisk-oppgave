@@ -1,13 +1,17 @@
+import javafx.animation.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.media.AudioClip;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import java.awt.*;
 import javafx.event.Event;
+import javafx.util.Duration;
 
 
 public class GameBoard extends Application{
@@ -18,6 +22,9 @@ public class GameBoard extends Application{
     private Design design;
     private ScoreGui score;
     private GameManager manager;
+    private Scene scene;
+    private RotateTransition rt1;
+    private RotateTransition rt2;
 
     @Override
     public void start(Stage stage) {
@@ -28,25 +35,41 @@ public class GameBoard extends Application{
         manager = new GameManager(this);
 
         mainPane.setTop(score);
-
-
-        Scene scene = new Scene(mainPane, 650, 950);
-
-        flipperControll(scene);
+        scene = new Scene(mainPane, 650, 950);
+        flipperControll();
 
         stage.setTitle("Pinball");
         stage.setScene(scene);
         stage.show();
     }
 
-    private void flipperControll(Scene scene){
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                System.out.print(event);
-            }
-        });
-    }
+    public void flipperControll() {
+
+        rt1 = new RotateTransition(Duration.millis(100), (design.f1));
+        rt1.setFromAngle(0);
+        rt1.setToAngle(-80);
+        rt1.setCycleCount(2);
+        rt1.setAutoReverse(true);
+
+        rt2 = new RotateTransition(Duration.millis(100), (design.f2));
+        rt2.setFromAngle(0);
+        rt2.setToAngle(80);
+        rt2.setCycleCount(2);
+        rt2.setAutoReverse(true);
+
+            scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent event) {
+                    if (event.getCode() == KeyCode.A) {
+                        rt1.play();
+                    }
+                    if (event.getCode() == KeyCode.D) {
+                        rt2.play();
+                    }
+                }
+            });
+        }
+
 
     protected void moveBall(Ball ball) {
 
@@ -56,7 +79,7 @@ public class GameBoard extends Application{
 
             // Sjekke om ball treffer ytre boks
             if (ball.getCenterX() < ball.getRadius() || ball.getCenterX() > mainPane.getWidth() - ball.getRadius()) {
-                ball.getVelocity().setX(-ball.getVelocity().getX());
+                ball.getVelocity().setX(-ball.getVelocity().getX()+20);
             }
 
             if (ball.getCenterY() <= ball.getRadius()) {
@@ -68,8 +91,6 @@ public class GameBoard extends Application{
                 mainPane.getChildren().remove(ball);
                 manager.newBall();
             }
-
-
 
             // endre position på ball
             ball.newVelocity(ball.getVelocity());
@@ -108,4 +129,7 @@ public class GameBoard extends Application{
         return manager;
     }
 
+    public Scene getScene() {
+        return scene;
+    }
 }
