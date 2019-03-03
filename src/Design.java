@@ -2,6 +2,12 @@ import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
 
+/**
+ * Klassen lager forskjellige Shape-objekt
+ * som fungerer som hinder/begrensinger/poeng for
+ * ballen på banen
+ */
+
 public class Design {
 
     private ArrayList<CollisionObjects> objektArray;
@@ -15,6 +21,11 @@ public class Design {
         objectSetup();
     }
 
+    /**
+     * Metoden lager forskjellige Shape objekt som
+     * blir lagt inn i objektArray for sjekk i sammenheng
+     * med grensesnitt
+     */
     private void objectSetup(){
 
         // Flippers
@@ -48,6 +59,9 @@ public class Design {
 
     }
 
+    /**
+     * Standard get metode
+     */
     public ArrayList<CollisionObjects> getObjectArray(){
         return objektArray;
     }
