@@ -95,14 +95,14 @@ public class GameBoard extends Application {
 
             // Sjekke om ball treffer ytre boks
             if (ball.getCenterX() < ball.getRadius() || ball.getCenterX() > mainPane.getWidth() - ball.getRadius()) {
-                ball.getVelocity().setX(-ball.getVelocity().getX());
+                ball.getVelocity().setX(-(ball.getVelocity().getX()));
             }
 
-            if (ball.getCenterY() <= ball.getRadius()) {
+            if (ball.getCenterY() < ball.getRadius()) {
                 ball.getVelocity().setY(-(ball.getVelocity().getY()));
             }
 
-            if(ball.getCenterY() >= mainPane.getHeight() - ball.getRadius()){
+            if(ball.getCenterY() > mainPane.getHeight() - ball.getRadius()){
                 GameManager.gameRunning = false;
                 mainPane.getChildren().remove(ball);
                 manager.gameStateCheck();
@@ -111,6 +111,7 @@ public class GameBoard extends Application {
             // endre position på ball
             ball.newVelocity(ball.getVelocity());
             ball.getVelocity().setY(ball.getVelocity().getY() + ball.getGravity());
+
 
             // Sjekker for kollisjon gjennom grensesnitt
             for (int i = 0; i < design.getObjectArray().size(); i++) {

@@ -33,7 +33,8 @@ public class Flipper extends Line implements CollisionObjects{
      */
 
     public void collisionEvent(Ball ball){
-        ball.setVelocity(new BallVector(ball.getVelocity().getX(), -ball.getVelocity().getY()));
+        int random = (int)(Math.random() * 20 + 1);
+        ball.setVelocity(new BallVector(ball.getVelocity().getX(), -ball.getVelocity().getY() - random));
     }
 
 
