@@ -5,6 +5,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
+/**
+ * Klassen viser (tid?), score og baller igjen
+ * oppe i venstre hjørne. Panelet blir satt inn med
+ * setTop() av hovedpanelet.
+ */
+
 public class ScoreGui extends VBox {
 
     public static Label labelTime;
@@ -20,6 +26,9 @@ public class ScoreGui extends VBox {
         setup();
     }
 
+    /**
+     * Metoden setter opp og plaserer labels.
+     */
     private void setup(){
         labelTime = new Label();
         ballsLeft = new Label();
@@ -34,6 +43,9 @@ public class ScoreGui extends VBox {
         this.setPadding(new Insets(10,5,5,15));
     }
 
+    /**
+     * Standard get og set metoder
+     */
     public int getScore() {
         return score;
     }
