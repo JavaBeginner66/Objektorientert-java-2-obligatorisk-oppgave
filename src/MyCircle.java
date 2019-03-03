@@ -10,6 +10,8 @@ public class MyCircle extends Circle implements CollisionObjects{
 
     public MyCircle(double x, double y, double radius){
         super(x, y, radius);
+        setFill(Color.WHITE);
+        setStroke(Color.BLACK);
     }
 
     /**

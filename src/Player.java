@@ -22,7 +22,7 @@ public class Player implements Serializable, Comparable<Player> {
     private String name;
 
     public Player(String name){
-        this.balls = 2;
+        this.balls = 5;
         this.score = 0;
         this.name = name;
     }

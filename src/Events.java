@@ -48,7 +48,7 @@ public class Events {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    object.setFill(Color.BLACK);
+                    object.setFill(Color.WHITE);
                     try {
                         sleep(200);
                     } catch (InterruptedException e) {
@@ -73,7 +73,6 @@ public class Events {
                 count = 0;
                 while (GameManager.gameRunning) {
                     count++;
-
                     try {
                         sleep(1000);
                     } catch (InterruptedException e) {
