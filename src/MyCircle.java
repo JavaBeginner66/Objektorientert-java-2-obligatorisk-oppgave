@@ -38,7 +38,29 @@ public class MyCircle extends Circle implements CollisionObjects{
         // Midlertidig (Snur bare om på velocity)
         ball.setVelocity(new BallVector(-ball.getVelocity().getX(), (-ball.getVelocity().getY() + random)));
         // Legger til poeng på score
-        ball.getBoard().getScoreGui().setScore(ball.getBoard().getScoreGui().getScore()+25);
+        ball.getBoard().getScoreGui().setScore(ball.getBoard().getScoreGui().getScore()+checkPoints());
         Events tick = new Events(this);
+    }
+
+    private int checkPoints(){
+        int points = 0;
+
+        if(getRadius() <= 10) {
+            points = 500;
+        }
+        else if(getRadius() <= 25 && getRadius() >= 10){
+            points = 300;
+        }
+        else if(getRadius() <= 50 && getRadius() >= 25){
+            points = 150;
+        }
+        else if(getRadius() <= 100 && getRadius() >= 50){
+            points = 50;
+        }
+        else{
+            points = 25;
+        }
+
+        return points;
     }
 }
