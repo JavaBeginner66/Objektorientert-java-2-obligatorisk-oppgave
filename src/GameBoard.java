@@ -120,6 +120,10 @@ public class GameBoard extends Application {
             }
             // Oppdaterer score hver frame
             ScoreGui.labelScore.setText("Score: " + score.getScore());
+            // Oppdaterer timer hver frame
+            ScoreGui.labelTime.setText("Time: " + Events.count);
+            // Plusser mengden tid til på score
+            score.setScore(score.getScore()+Events.count);
         }
     }
 

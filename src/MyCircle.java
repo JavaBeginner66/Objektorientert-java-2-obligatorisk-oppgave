@@ -8,8 +8,6 @@ import javafx.scene.shape.Circle;
 
 public class MyCircle extends Circle implements CollisionObjects{
 
-    // Legge til variabel(sjekk) for poeng
-
     public MyCircle(double x, double y, double radius){
         super(x, y, radius);
     }
@@ -35,13 +33,15 @@ public class MyCircle extends Circle implements CollisionObjects{
      */
     public void collisionEvent(Ball ball){
         int random = (int)(Math.random() * 50 + 1);
-        // Midlertidig (Snur bare om på velocity)
         ball.setVelocity(new BallVector(-ball.getVelocity().getX(), (-ball.getVelocity().getY() + random)));
-        // Legger til poeng på score
+
         ball.getBoard().getScoreGui().setScore(ball.getBoard().getScoreGui().getScore()+checkPoints());
         Events tick = new Events(this);
     }
 
+    /**
+     * Metoden sjekker radiusen på sirkelen og gir poeng hensiktsmessig.
+     */
     private int checkPoints(){
         int points = 0;
 

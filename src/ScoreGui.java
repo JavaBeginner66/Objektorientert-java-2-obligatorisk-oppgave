@@ -30,7 +30,7 @@ public class ScoreGui extends VBox {
      * Metoden setter opp og plaserer labels.
      */
     private void setup(){
-        labelTime = new Label();
+        labelTime = new Label("Time: ");
         ballsLeft = new Label();
         labelScore = new Label("Score: ");
         labelScore.setFont(Font.font("Monospace",

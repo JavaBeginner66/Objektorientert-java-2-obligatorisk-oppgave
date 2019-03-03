@@ -29,7 +29,7 @@ public class MyRectangle extends Rectangle implements CollisionObjects {
      * Metoden gir ballen en motsatt X-retning ved kollisjon
      */
     public void collisionEvent(Ball ball){
-        ball.setVelocity(new BallVector(-ball.getVelocity().getX(), ball.getVelocity().getY()));
+        ball.setVelocity(new BallVector(-ball.getVelocity().getX(), -ball.getVelocity().getY()));
     }
 
 }

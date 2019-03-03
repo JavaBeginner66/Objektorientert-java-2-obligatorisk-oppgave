@@ -8,19 +8,15 @@ import java.util.Random;
 /**
  * Klasse inneholder forskjellige events som
  * starter egne Threads.
- * Hver konstruktør metode vil utløse
- * sin egen event
  */
 
 public class Events {
 
+    public static int count;
+
     public Events(Shape object) {
 
         colorTicker(object);
-    }
-
-    public Events(boolean gameRunning) {
-        startTimer(gameRunning);
     }
 
     /**
@@ -69,14 +65,15 @@ public class Events {
      * Eventen starter en timer som starter når spillet
      * starter, og slutter når ball er ute av spill
      */
-    public void startTimer(boolean gameRunning) {
+    public static void startTimer() {
+
+        GameManager.gameRunning = true;
         Thread clock = new Thread() {
             public void run() {
-                double count = 0;
-                while (gameRunning) {
-                    ScoreGui.labelTime.setText(String.valueOf(count));
-                    System.out.print(count);
+                count = 0;
+                while (GameManager.gameRunning) {
                     count++;
+
                     try {
                         sleep(1000);
                     } catch (InterruptedException e) {

@@ -8,14 +8,13 @@ import javafx.scene.shape.Circle;
 
 public class Ball extends Circle {
 
+    private GameBoard board;
+
     private BallVector velocity;
     private BallVector speed;
 
-    private GameBoard board;
-
     private double gravity;
     private double bounce;
-
 
     public Ball(double x, double y, double r, GameBoard board) {
         super(x, y, r);

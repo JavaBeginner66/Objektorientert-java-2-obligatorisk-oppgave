@@ -29,4 +29,5 @@ public class MyLine extends Line implements CollisionObjects{
     public void collisionEvent(Ball ball){
         ball.setVelocity(new BallVector(ball.getVelocity().getX()-10, 10));
     }
+
 }

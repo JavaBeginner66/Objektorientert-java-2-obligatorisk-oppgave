@@ -80,8 +80,7 @@ public class GameManager {
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.play();
 
-
-        ball.setOnMouseClicked(e -> gameRunning = true);
+        ball.setOnMouseClicked(e -> Events.startTimer());
     }
 
     /**
