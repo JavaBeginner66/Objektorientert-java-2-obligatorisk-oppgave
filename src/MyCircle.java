@@ -2,6 +2,10 @@ import javafx.geometry.Bounds;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+/**
+ * Klassen produserer sirkel objekt av type Shape.
+ */
+
 public class MyCircle extends Circle implements CollisionObjects{
 
     // Legge til variabel(sjekk) for poeng
@@ -10,6 +14,11 @@ public class MyCircle extends Circle implements CollisionObjects{
         super(x, y, radius);
     }
 
+    /**
+     * Metoden sjekker kollisjon ved å først finne avstand mellom
+     * to punkt, også finne ut om radiusen til hver sirkel totalt er
+     * høyere enn avstanden
+     */
     public boolean detectCollision(Ball ball)
     {
         double distance = Math.sqrt((ball.getCenterX() - this.getCenterX())
@@ -20,6 +29,10 @@ public class MyCircle extends Circle implements CollisionObjects{
         return (ball.getRadius() + this.getRadius() >= distance);
     }
 
+    /**
+     * Metoden gir ballen motsatt velocity + et ekstra push av tilfeldighet.
+     * Den gir også score for hver kollisjon, i tilleg til å starte en tick-event.
+     */
     public void collisionEvent(Ball ball){
         int random = (int)(Math.random() * 50 + 1);
         // Midlertidig (Snur bare om på velocity)
