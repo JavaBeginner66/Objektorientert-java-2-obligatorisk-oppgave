@@ -21,3 +21,8 @@ skolen for å jobbe sammen.
 Som loggførings-verktøy brukte vi Github og Gitkraken, som er veldig
 oversiktlig og bra. Der er det veldig vanskelig å miste/eller surre
 seg vekk i sin egen kode.
+
+Den vanskeligste delen av oppgava var helt klart å prøve å få til skikkelige physics
+og kollisjon på ball. Den meste av tida gikk til å prøve å forstå og implementere
+en normal oppførsel på ballen, men vi endte opp med å bare hardkode mye av bevegelsene.
+Skulle gjerne hatt mer tid til å fokusere på feks design, grafikk, lyd og generelt systemet bak spillet.
