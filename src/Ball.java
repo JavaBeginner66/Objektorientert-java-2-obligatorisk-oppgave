@@ -2,7 +2,8 @@
 import javafx.scene.shape.Circle;
 
 /**
- * 
+ * Objekt av klasse er en ball som blir satt i spill
+ * med forskjellige pseudo-physics
  */
 
 public class Ball extends Circle {
@@ -24,11 +25,20 @@ public class Ball extends Circle {
         this.board = board;
     }
 
+    /**
+     * Metode som legger velocity til
+     * på ball-posisjon. Varierende velocity vil
+     * bestemme hvilken retning/hastighet
+     * ballen vil fortsette i neste frame.
+     */
     public void newVelocity(BallVector velocity){
         setCenterX(getCenterX() + velocity.getX());
         setCenterY(getCenterY() + velocity.getY());
     }
 
+    /**
+     * Standard get og set metoder
+     */
     public BallVector getVelocity() {
         return velocity;
     }
