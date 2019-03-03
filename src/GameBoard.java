@@ -5,8 +5,23 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+/**
+ * Programmet simulerer en simpel versjon av spiller ''Pinball''
+ * der spilleren skal prøve å holde en ball i spill ved hjelp av
+ * ''Flippers'' og ulike hindre.
+ *
+ * Klassen er ansvarlig for å starte applikasjonen, i tilleg til
+ * å kjøre spill-loopen som sier hvordan ballen skal
+ * oppføre seg. Klassen har også ansvar for Flipper-kontroller.
+ *
+ * @authors Jan Andreas Sletta, Torbjørn Lunde Olaisen, Sindre Haavaldsen, Kristian Kløvstad
+ * @version 1.0
+ * @since   27.02.2019
+ */
 
 public class GameBoard extends Application {
 
@@ -18,9 +33,12 @@ public class GameBoard extends Application {
     private GameManager manager;
     private Scene scene;
 
+    /**
+     * Metoden legger opp ulike panel/klasser
+     */
     @Override
     public void start(Stage stage) {
-        // Sende alt inn til gamemanager
+
         mainPane = new BorderPane();
         design = new Design(this);
         score = new ScoreGui(this);
@@ -36,6 +54,10 @@ public class GameBoard extends Application {
         stage.show();
     }
 
+    /**
+     * Metoden legger til en rotasjons-animasjon for flippers
+     * Når bruker trykker ''A'' for venstre flipper, eller ''D'' for høyre flipper.
+     */
     public void flipperControll() {
 
         RotateTransition rt1 = new RotateTransition(Duration.millis(100), (design.f1));
@@ -63,7 +85,10 @@ public class GameBoard extends Application {
             });
         }
 
-    // Spill-loopen
+    /**
+     * Metoden kontrollerer hvordan ballen skal oppføre seg hver gang
+     * den blir oppdatert gjennom en Timeline animasjon
+     */
     protected void moveBall(Ball ball) {
 
         if(GameManager.gameRunning) {
@@ -99,6 +124,9 @@ public class GameBoard extends Application {
     }
 
 
+    /**
+     * Standard get og set metoder
+     */
 
     public BorderPane getMainPane(){
         return mainPane;
