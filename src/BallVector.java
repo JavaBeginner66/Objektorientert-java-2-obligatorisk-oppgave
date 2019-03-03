@@ -1,3 +1,7 @@
+/**
+ * Klassen lagrer x og y kordinater for
+ * forskjellige/potensielle ball-felt/variabler
+ */
 
 public class BallVector {
 
@@ -8,6 +12,10 @@ public class BallVector {
         this.x = x;
         this.y = y;
     }
+
+    /**
+     * Standard get og set metoder
+     */
 
     public double getX() {
         return x;
