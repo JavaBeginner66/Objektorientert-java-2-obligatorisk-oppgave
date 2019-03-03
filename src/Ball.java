@@ -1,10 +1,11 @@
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.beans.property.DoubleProperty;
-import javafx.scene.shape.Circle;
-import javafx.util.Duration;
 
-public class Ball extends Circle{
+import javafx.scene.shape.Circle;
+
+/**
+ * 
+ */
+
+public class Ball extends Circle {
 
     private BallVector velocity;
     private BallVector speed;
@@ -36,10 +37,6 @@ public class Ball extends Circle{
         this.velocity = velocity;
     }
 
-    public double getBounce() {
-        return bounce;
-    }
-
     public GameBoard getBoard() {
         return board;
     }
@@ -48,7 +45,4 @@ public class Ball extends Circle{
         return gravity;
     }
 
-    public void setGravity(double gravity) {
-        this.gravity = gravity;
-    }
 }

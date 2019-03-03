@@ -3,7 +3,6 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -87,7 +86,7 @@ public class TopScores extends GridPane {
     }
 
     private void displayTopList(){
-        
+
         Collections.sort(scoreList);
         Collections.reverse(scoreList);
 

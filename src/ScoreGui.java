@@ -7,11 +7,11 @@ import javafx.scene.text.FontWeight;
 
 public class ScoreGui extends VBox {
 
-    private GameBoard board;
-
     public static Label labelTime;
     public static Label labelScore;
     public static Label ballsLeft;
+
+    private GameBoard board;
 
     private int score;
 
@@ -32,24 +32,6 @@ public class ScoreGui extends VBox {
                 FontWeight.BOLD, FontPosture.REGULAR, 20));
         this.getChildren().addAll(labelTime, labelScore, ballsLeft);
         this.setPadding(new Insets(10,5,5,15));
-    }
-
-    public GameBoard getBoard() {
-        return board;
-    }
-
-
-    public Label getLabelTime() {
-        return labelTime;
-    }
-
-
-    public Label getLabelScore() {
-        return labelScore;
-    }
-
-    public Label getBallsLeft() {
-        return ballsLeft;
     }
 
     public int getScore() {

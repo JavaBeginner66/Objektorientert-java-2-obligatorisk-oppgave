@@ -22,7 +22,7 @@ public class Events {
         try {
             //GameBoard.sound.play();
         }catch(Exception e){
-            System.out.print("Failed");
+            System.out.print("Sound-effect failed to play");
         }
 
         Thread tick = new Thread() {

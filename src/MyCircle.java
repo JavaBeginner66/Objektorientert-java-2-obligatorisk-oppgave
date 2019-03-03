@@ -4,6 +4,8 @@ import javafx.scene.shape.Circle;
 
 public class MyCircle extends Circle implements CollisionObjects{
 
+    // Legge til variabel(sjekk) for poeng
+
     public MyCircle(double x, double y, double radius){
         super(x, y, radius);
     }
@@ -25,10 +27,5 @@ public class MyCircle extends Circle implements CollisionObjects{
         // Legger til poeng på score
         ball.getBoard().getScoreGui().setScore(ball.getBoard().getScoreGui().getScore()+25);
         Events tick = new Events(this);
-        /*
-        GameManager.gameRunning = false;
-        ball.getBoard().getMainPane().getChildren().remove(ball);
-        ball = null;
-        */
     }
 }

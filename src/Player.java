@@ -2,16 +2,13 @@ import java.io.Serializable;
 
 public class Player implements Serializable, Comparable<Player> {
 
-
     private static final long serialVersionUID = 4694861542429517006L;
     private transient int balls;
     private int score;
     private String name;
 
-    public Player(){}
-
     public Player(String name){
-        this.balls = 1;
+        this.balls = 2;
         this.score = 0;
         this.name = name;
     }
@@ -22,10 +19,6 @@ public class Player implements Serializable, Comparable<Player> {
 
     public void setBalls(int balls) {
         this.balls = balls;
-    }
-
-    public int getScore() {
-        return score;
     }
 
     public void setScore(int score) {

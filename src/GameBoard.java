@@ -1,20 +1,14 @@
-import javafx.animation.*;
+import javafx.animation.RotateTransition;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.media.AudioClip;
-import javafx.scene.shape.Line;
 import javafx.stage.Stage;
-import java.awt.*;
-import javafx.event.Event;
 import javafx.util.Duration;
 
-
-public class GameBoard extends Application{
+public class GameBoard extends Application {
 
     //public final static AudioClip sound = new AudioClip("https://www.pacdv.com/sounds/people_sound_effects/baby-sneezing-1.wav");
 
@@ -30,10 +24,11 @@ public class GameBoard extends Application{
         mainPane = new BorderPane();
         design = new Design(this);
         score = new ScoreGui(this);
+        manager = new GameManager(this);
 
         mainPane.setTop(score);
         scene = new Scene(mainPane, 650, 950);
-        manager = new GameManager(this);
+
         flipperControll();
 
         stage.setTitle("Pinball");
@@ -68,10 +63,8 @@ public class GameBoard extends Application{
             });
         }
 
-
+    // Spill-loopen
     protected void moveBall(Ball ball) {
-
-        // Spill-loopen
 
         if(GameManager.gameRunning) {
 
@@ -94,7 +87,7 @@ public class GameBoard extends Application{
             ball.newVelocity(ball.getVelocity());
             ball.getVelocity().setY(ball.getVelocity().getY() + ball.getGravity());
 
-            // Gjøre referansen kortere etterhvert
+            // Sjekker for kollisjon gjennom grensesnitt
             for (int i = 0; i < design.getObjectArray().size(); i++) {
                 if (design.getObjectArray().get(i).detectCollision(ball)) {
                     design.getObjectArray().get(i).collisionEvent(ball);
@@ -111,25 +104,12 @@ public class GameBoard extends Application{
         return mainPane;
     }
 
-
-
-    public Design getDesign() {
-        return design;
-    }
-
-    public static void main(String args[]){
-        launch(args);
-    }
-
     public ScoreGui getScoreGui() {
         return score;
     }
 
-    public GameManager getManager() {
-        return manager;
-    }
 
-    public Scene getScene() {
-        return scene;
+    public static void main(String args[]){
+        launch(args);
     }
 }

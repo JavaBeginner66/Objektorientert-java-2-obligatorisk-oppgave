@@ -1,11 +1,8 @@
 
-// Klasse som holder på x,y variabler
 public class BallVector {
 
     private double x;
     private double y;
-
-    public BallVector(){}
 
     public BallVector(double x, double y){
         this.x = x;
