@@ -5,6 +5,13 @@ import javafx.scene.shape.Shape;
 
 import java.util.Random;
 
+/**
+ * Klasse inneholder forskjellige events som
+ * starter egne Threads.
+ * Hver konstruktør metode vil utløse
+ * sin egen event
+ */
+
 public class Events {
 
     public Events(Shape object) {
@@ -15,7 +22,13 @@ public class Events {
     public Events(boolean gameRunning) {
         startTimer(gameRunning);
     }
-    
+
+    /**
+     * Eventen vil trigre når spiller-objektet treffer
+     * et Shape-objekt, som resulterer i at Shape-objektet
+     * begynner å blinke i en tilfeldig farge mellom utvalgte
+     * farger i et array.
+     */
 
     public void colorTicker(Shape object) {
 
@@ -52,7 +65,10 @@ public class Events {
         tick.start();
     }
 
-
+    /**
+     * Eventen starter en timer som starter når spillet
+     * starter, og slutter når ball er ute av spill
+     */
     public void startTimer(boolean gameRunning) {
         Thread clock = new Thread() {
             public void run() {
