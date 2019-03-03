@@ -29,7 +29,7 @@ public class Flipper extends Line implements CollisionObjects{
     }
 
     /**
-     * Metoden endrer Y-retningen
+     * Metoden endrer Y-retningen til ball ved kollisjon
      */
 
     public void collisionEvent(Ball ball){

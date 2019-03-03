@@ -80,7 +80,7 @@ public class GameBoard extends Application {
             if(ball.getCenterY() >= mainPane.getHeight() - ball.getRadius()){
                 GameManager.gameRunning = false;
                 mainPane.getChildren().remove(ball);
-                manager.newBallConditionCheck();
+                manager.gameStateCheck();
             }
 
             // endre position på ball
