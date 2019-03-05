@@ -18,14 +18,15 @@ import javafx.util.Duration;
  * å kjøre spill-loopen som sier hvordan ballen skal
  * oppføre seg. Klassen har også ansvar for Flipper-kontroller.
  *
- * @authors Jan Andreas Sletta, Torbjørn Lunde Olaisen, Sindre Haavaldsen, Kristian Kløvstad
+ * @author Jan Andreas Sletta
  * @version 1.0
  * @since   27.02.2019
  */
 
 public class GameBoard extends Application {
 
-    //public final static AudioClip sound = new AudioClip("https://www.pacdv.com/sounds/people_sound_effects/baby-sneezing-1.wav");
+    // Grå ut denne + GameBoard.sound.play(); i Event klassen for å hindre lang oppstart
+    public final static AudioClip sound = new AudioClip("https://www.pacdv.com/sounds/people_sound_effects/baby-sneezing-1.wav");
 
     private BorderPane mainPane;
     private Design design;

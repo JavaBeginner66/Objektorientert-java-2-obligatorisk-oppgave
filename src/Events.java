@@ -29,7 +29,7 @@ public class Events {
     public void colorTicker(Shape object) {
 
         try {
-            //GameBoard.sound.play();
+            GameBoard.sound.play();
         }catch(Exception e){
             System.out.print("Sound-effect failed to play");
         }
